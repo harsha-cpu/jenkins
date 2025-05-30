@@ -1,4 +1,13 @@
-FROM nginx:latest
-COPY index.html /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY . .
+
+# (Optional) Install Flask or any needed packages manually
+RUN pip install flask
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
+
